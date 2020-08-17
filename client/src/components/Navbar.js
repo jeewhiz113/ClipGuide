@@ -7,8 +7,8 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
-import LoginModal from './auth/LoginModal';
-import RegisterModal from './auth/RegisterModal';
+import LoginModal from './authModal/LoginModal';
+import RegisterModal from './authModal/RegisterModal';
 
 const AppNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
