@@ -24,10 +24,10 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  //console.log(state);
   return {
-    isAuthenticated: state.isAuthenticated,
-    questions: state.questions,  //Why is this undefined? Perhaps I need to dispatch it also?
+    isAuthenticated: state.auth.isAuthenticated,
+    questions: state.question.questions  //Why is this undefined? Perhaps I need to dispatch it also?
   }
 };
 

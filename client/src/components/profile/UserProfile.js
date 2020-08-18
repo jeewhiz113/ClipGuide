@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 
 const UserProfile = (props) =>{
+  console.log(props)
   return (
     <div>
-      <h1>Hello {props.user.name}</h1>
+      <h1>Hello {props.name}</h1>
     </div>
   )
 } 
@@ -15,7 +16,7 @@ const UserProfile = (props) =>{
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    isAuthenticated: state.isAuthenticated  //Why is this undefined? Perhaps I need to dispatch it also?
+    name: state.auth.user.name  //Why is this undefined? Perhaps I need to dispatch it also?
   }
 };
 

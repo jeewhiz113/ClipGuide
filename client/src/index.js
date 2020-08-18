@@ -4,11 +4,11 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import authReducer from './reducers/authReducer';
+import combineReducer from './reducers/index';
 import thunk from 'redux-thunk';
 import './App.css';
 
-const store = createStore(authReducer,  compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())); 
+const store = createStore(combineReducer,  compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())); 
 
 ReactDOM.render(
     <Provider store = {store}>
