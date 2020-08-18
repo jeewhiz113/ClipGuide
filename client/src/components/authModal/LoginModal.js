@@ -51,11 +51,11 @@ class LoginModal extends Component {
       password,
     }
     console.log('front end' + user);
-    //Ok so here is the problem....
     this.props.loginUser(user);
   }
 
   render(){
+    //console.log(this.props)
     return(
       <div>
         <NavLink onClick={this.toggle} href="#">Login</NavLink>
@@ -82,6 +82,13 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     loginUser: (user) => {dispatch(loginUser(user))}
   }
-}
+}; 
 
-export default connect(null, mapDispatchToProps)(LoginModal);
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+//export default (LoginModal);
