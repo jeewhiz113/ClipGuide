@@ -4,15 +4,15 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-//Register the user, once successful, send the user info back to the frontend.
+//Ok so now lets get our redux store going.
+
 router.post('/register', (req, res)=>{
-  //console.log(req.body);
   const { name, email, password } = req.body;
   if (!name || !email || !password){
     return res.status(400).json({msg: "Please enter all fields."});  //400 means its a bad request, the message is used for redux to display to the user
   }
   User.findOne({email: email})
-    .then(user =>{  //note, user is either null if not found or it exists.
+    .then(user =>{
       if (user){
         return res.status(400).json({msg: "User already exists."});
       };
@@ -33,10 +33,6 @@ router.post('/register', (req, res)=>{
       })
     })
 });
-/*
-Ok so now I need to run the front end and the backend concurrently,
-When the 
-*/
 
 router.post('/login', (req, res)=>{
   const { email, password } = req.body;
@@ -56,9 +52,9 @@ router.post('/login', (req, res)=>{
           }
           jwt.sign({id:user.id}, "myjwtsecret", {expiresIn: 3600}, (err, token)=>{
             if (err) throw err;
-            res.json({token: token, user: {id: user.id, email: user.email, name:user.name}})
+            res.json({token: token, user: {id: user.id, email: user.email}})
           })
         })
     })
-})
+});
 module.exports = router;

@@ -27,11 +27,10 @@ const mapStateToProps = (state) => {
   //console.log(state);
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    questions: state.question.questions  //Why is this undefined? Perhaps I need to dispatch it also?
+    questions: state.question.questions  
   }
 };
 
 
 export default connect(mapStateToProps)(App); 
 
-//Tomorrow: create a router that takes the user to the profile page.  In the profile page, the user can add a new question, then a modal pops up and ask the user for the topic
