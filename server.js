@@ -26,5 +26,9 @@ app.listen(5000, ()=>{
 
 /*
 Ok so its been decided that I will be using jwt for this application.
+
+Get the user model in here.  And go to authUser to finish the code to register for a user.
+
 Now tomorrow on youtube, look up how to protect routes using jwt.
+
 */

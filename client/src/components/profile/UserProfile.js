@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 //also import the addQuestion from the action folder.
 
-
+//So we have UserProfile here and then we load up questions.js as a component in here.
 
 const UserProfile = (props) =>{
   console.log(props)
   return (
     <div>
       <h1>Hello {props.name}</h1>
+      <Button className='remove-btn' color="danger" size="sm" >Add Question</Button>
     </div>
   )
 } 
@@ -17,6 +19,7 @@ const mapStateToProps = (state) => {
   //console.log(state);
   return {
     name: state.auth.user.name  //Why is this undefined? Perhaps I need to dispatch it also?
+    
   }
 };
 
