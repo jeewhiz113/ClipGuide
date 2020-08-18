@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
   }
 };
 
+//Now I add the addquestion button and addquestion action.  It should add the question to the database, then return the question and I should grab that and then add it to the questions array in the redux store.  Then create a component strictly to display all the questions in the userprofile.
 
 
 export default connect(mapStateToProps)(UserProfile);
