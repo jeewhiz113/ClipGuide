@@ -12,14 +12,12 @@ import {
   NavLink,
   Alert
 } from 'reactstrap';
-//import { connect } from 'react-redux';
-//import { register } from '../../actions/authActions';
-//import { clearErrors } from '../../actions/errorActions';
-//import PropTypes from 'prop-types';
+
 
 
 //Use useState hooks.
-//this takes care of adding a question to the database.
+//this takes care of adding a question modal
+//Then look at all the emails from Colin and make changes, then email Mandy.
 const QuestionModal = ()=> {
   /* state = {
     modal:false,
