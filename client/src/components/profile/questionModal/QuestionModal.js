@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 //import {v4 as uuid} from 'uuid';
 import {
   Button,
@@ -26,16 +26,18 @@ const QuestionModal = ()=> {
     password:'',
     msg:null
   } */
-  toggle = ()=>{
+  const [modal, setModal] = useState(false);
+  const [topic, setTopic] = useState("");
+  const [question, setQuestion] = useState("");
+  
+  toggle = ()=>{ //Here we set the modal to be the opposite of the current modal value.
     //Clear errors:
-    this.props.clearErrors();
-    this.setState({
-      modal:!this.state.modal
-    });
+    //this.props.clearErrors();
+    setModal(!modal);
   }
 
   //Whats the difference between componentDidMount and componentDidUpdate?
-  componentDidUpdate(preProps){
+  /* componentDidUpdate(preProps){
     const {error, isAuthenticated} = this.props;
     if (error !== preProps.error){
       if (error.id === 'REGISTER_FAIL'){  //set the state of the RegisterModal
@@ -49,22 +51,22 @@ const QuestionModal = ()=> {
         this.toggle();
       }
     }
-  }
+  } */
 
-  onChange = (e) =>{
+  /* onChange = (e) =>{
     this.setState({
       [e.target.name] : e.target.value
     });
-  }
+  } */
   onSubmit = e =>{
     e.preventDefault();
     const {name, email, password} = this.state;
-    //Create a user object:
-    const newUser = {
+    //Create a question object:
+    /* const newUser = {
       name,
       email,
       password
-    };
+    }; */
     //attempt to register
     this.props.register(newUser);
     
