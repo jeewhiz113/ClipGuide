@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action){
-  console.log(action.type);
+  //console.log(action.type);
   switch(action.type){
     case USER_LOADED:  //if the case is USER_LOADED, then change the state
       return {

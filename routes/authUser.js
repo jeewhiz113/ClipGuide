@@ -52,7 +52,7 @@ router.post('/login', (req, res)=>{
           }
           jwt.sign({id:user.id}, "myjwtsecret", {expiresIn: 3600}, (err, token)=>{
             if (err) throw err;
-            res.json({token: token, user: {id: user.id, email: user.email}})
+            res.json({token: token, user: {id: user.id, email: user.email, name: user.name}})
           })
         })
     })

@@ -12,104 +12,38 @@ import {
   NavLink,
   Alert
 } from 'reactstrap';
-
-
-
 //Use useState hooks.
 //this takes care of adding a question modal
 //Then look at all the emails from Colin and make changes, then email Mandy.
 const QuestionModal = ()=> {
-  /* state = {
-    modal:false,
-    name: '',
-    email:'',
-    password:'',
-    msg:null
-  } */
   const [modal, setModal] = useState(false);
   const [topic, setTopic] = useState("");
   const [question, setQuestion] = useState("");
   
-  toggle = ()=>{ //Here we set the modal to be the opposite of the current modal value.
-    //Clear errors:
-    //this.props.clearErrors();
+  const toggle = ()=>{ 
     setModal(!modal);
   }
-
-  //Whats the difference between componentDidMount and componentDidUpdate?
-  /* componentDidUpdate(preProps){
-    const {error, isAuthenticated} = this.props;
-    if (error !== preProps.error){
-      if (error.id === 'REGISTER_FAIL'){  //set the state of the RegisterModal
-        this.setState({msg: error.msg.msg});
-      }else {
-        this.setState({msg:null})
-      }
-    }
-    if (this.state.modal){ //if open
-      if (isAuthenticated){ //if authenticated, close modal
-        this.toggle();
-      }
-    }
-  } */
-
-  /* onChange = (e) =>{
-    this.setState({
-      [e.target.name] : e.target.value
-    });
-  } */
-  onSubmit = e =>{
-    e.preventDefault();
-    const {name, email, password} = this.state;
-    //Create a question object:
-    /* const newUser = {
-      name,
-      email,
-      password
-    }; */
-    //attempt to register
-    this.props.register(newUser);
-    
+  const onSubmit = e =>{
+    e.preventDefault();  
   }
-
-  render(){
-    console.log(this.props);  //We see that when we log this here, with the mapDispatchToProps passed in to the connect function, the addItem function is now mapped to the props of this component.
-    return(
-      <div>
-        <NavLink onClick={this.toggle} href="#">Register</NavLink>
-        <Modal isOpen = {this.state.modal} toggle = {this.toggle}>
-          <ModalHeader toggle = {this.toggle}>Register</ModalHeader>
+  return(
+    <div>
+      <Button className='remove-btn' color="danger" size="sm" onClick = {toggle}>Add Question</Button>
+      <Modal isOpen = {modal} toggle = {toggle}>
+          <ModalHeader toggle = {toggle}>Login</ModalHeader>
             <ModalBody>
-              {this.state.msg ? <Alert color='danger'>{this.state.msg}</Alert> : null}
-              <Form onSubmit = {this.onSubmit}>
+              <Form onSubmit = {onSubmit}>
                 <FormGroup>
-                  <Label for='name'>Name</Label>
-                  <Input type = 'text' name="name" id = "name" placeholder = "Name" className="mb-3" onChange = {this.onChange}/>
                   <Label for='email'>Email</Label>
-                  <Input type = 'email' name="email" id = "email" placeholder = "Email" className="mb-3" onChange = {this.onChange}/>
+                  <Input type = 'email' name="email" id = "email" placeholder = "Email" className="mb-3"/>
                   <Label for='password'>Password</Label>
-                  <Input type = 'password' name="password" id = "password" placeholder = "Password" className="mb-3" onChange = {this.onChange}/>
-                  <Button color='dark' style={{marginTop: '2rem'}} block> Register</Button>
+                  <Input type = 'password' name="password" id = "password" placeholder = "Password" className="mb-3" />
+                  <Button color='dark' style={{marginTop: '2rem'}} block> Login</Button>
                 </FormGroup>
               </Form>
             </ModalBody>
-          
-        </Modal>
-      </div>
-    )
-  }
+      </Modal>
+    </div>
+  );
 }
-/* const mapStateToProps = (state) =>({
-  isAuthenticated: state.auth.isAuthenticated,  //if the user is authenticated or not.
-  error: state.error
-}) 
-//Then we need to think about how to lift these up with combineReducer
-const mapDispatchToProps = (dispatch) =>{
-  return {  
-    register : (newUser)=>{dispatch(register(newUser))},
-    clearErrors: () =>{dispatch(clearErrors())}
-  }
-  //mapDispatchToProps
-} */
-
-/* export default connect(mapStateToProps, mapDispatchToProps)(RegisterModal); */
+export default QuestionModal;
